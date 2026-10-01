@@ -7,6 +7,6 @@ out vec3 fragmentColor;
 
 void main()
 {
-    gl_Position = vec4(vertexPos.x * 0.5, vertexPos.y, vertexPos.z, 1.0);
+    gl_Position = vec4(vertexPos, 1.0);
     fragmentColor = vertexColor;
 }

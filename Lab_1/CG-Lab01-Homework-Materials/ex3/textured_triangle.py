@@ -85,8 +85,7 @@ class App:
         """
 
         self.triangle = Triangle()
-        # self.wood_texture = Material("gfx/cat.png")
-        self.wood_texture = Material("gfx/background.png")
+        self.wood_texture = Material("gfx/wood.jpeg")
         self.shader = create_shader(
             vertex_filepath = "shaders/vertex.txt", 
             fragment_filepath = "shaders/fragment.txt")
@@ -142,9 +141,9 @@ class Triangle:
 
         # x, y, z, r, g, b, s, t
         vertices = (
-            -0.5, -0.5, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0,  
-            0.5, -0.5, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0,   
-            0.0,  0.5, 0.0, 0.0, 0.0, 1.0, 0.5, 1.0    
+            -0.5, -0.5, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0,
+             0.5, -0.5, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0,
+             0.0,  0.5, 0.0, 0.0, 0.0, 1.0, 0.5, 0.0
         )
         vertices = np.array(vertices, dtype=np.float32)
 

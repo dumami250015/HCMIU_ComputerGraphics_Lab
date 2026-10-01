@@ -58,8 +58,7 @@ class Entity:
             Update the object, this is hard coded for now.
         """
 
-        # self.eulers[1] += 0.25
-        self.eulers[1] += 4.0
+        self.eulers[1] += 0.25
         
         if self.eulers[1] > 360:
             self.eulers[1] -= 360
@@ -72,22 +71,10 @@ class Entity:
 
         model_transform = pyrr.matrix44.create_identity(dtype=np.float32)
 
-        # x1.5 larger
-        scale_matrix = np.array([
-            [1.5, 0,   0,   0],
-            [0,   1.5, 0,   0],
-            [0,   0,   1.5, 0],
-            [0,   0,   0,   1]
-        ], dtype=np.float32)
-        model_transform = pyrr.matrix44.multiply(
-            m1=model_transform, m2=scale_matrix
-        )
-
         model_transform = pyrr.matrix44.multiply(
             m1=model_transform, 
             m2=pyrr.matrix44.create_from_axis_rotation(
-                # axis = [0, 1, 0],
-                axis = [1, 1, 0],
+                axis = [0, 1, 0],
                 theta = np.radians(self.eulers[1]), 
                 dtype = np.float32
             )
@@ -159,8 +146,7 @@ class App:
             eulers = [0,0,0]
         )
         self.cube_mesh = CubeMesh()
-        # self.wood_texture = Material("gfx/wood.jpeg")
-        self.wood_texture = Material("gfx/cat.png")
+        self.wood_texture = Material("gfx/wood.jpeg")
         self.shader = create_shader(
             vertex_filepath = "shaders/vertex.txt", 
             fragment_filepath = "shaders/fragment.txt")
@@ -288,39 +274,6 @@ class CubeMesh:
             -0.5,  0.5,  0.5, 0, 0,
             -0.5,  0.5, -0.5, 0, 1
         )
-
-        
-        # Pyramid
-        # apex = (0.0, 0.7, 0.0)
-        # bl = (-0.5, -0.5, 0.5)    
-        # br = (0.5, -0.5, 0.5)     
-        # tl = (-0.5, -0.5, -0.5)   
-        # tr = (0.5, -0.5, -0.5)    
-        # vertices = (
-        #     *apex, 0.5, 0.0,
-        #     *bl,   0.0, 1.0,
-        #     *br,   1.0, 1.0,
-
-        #     *apex, 0.5, 0.0,
-        #     *br,   0.0, 1.0,
-        #     *tr,   1.0, 1.0,
-
-        #     *apex, 0.5, 0.0,
-        #     *tr,   0.0, 1.0,
-        #     *tl,   1.0, 1.0,
-
-        #     *apex, 0.5, 0.0,
-        #     *tl,   0.0, 1.0,
-        #     *bl,   1.0, 1.0,
-
-        #     *bl,   0.0, 0.0,
-        #     *br,   1.0, 0.0,
-        #     *tr,   1.0, 1.0,
-        #     *tr,   1.0, 1.0,
-        #     *tl,   0.0, 1.0,
-        #     *bl,   0.0, 0.0,
-        # )
-
         self.vertex_count = len(vertices)//5
         vertices = np.array(vertices, dtype=np.float32)
 

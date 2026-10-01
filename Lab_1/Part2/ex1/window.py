@@ -95,6 +95,6 @@ if __name__ == "__main__":
     # TODO: Change between modes for practice
     # mode=1 → solid color background
     # mode=2 → image background
-    myApp = App(mode=2)
+    myApp = App(mode=1)
     myApp.run()
     myApp.quit()

@@ -20,7 +20,7 @@ class App:
         if self.mode == 2:
             # TODO(Part 2): replace with your image file 
             # use self._load_texture("background.jpg") for example  
-            self.bg_tex = self._load_texture("background.jpg")
+            pass
 
     def _set_up_pygame(self) -> None:
         pg.init()
@@ -41,7 +41,7 @@ class App:
         if self.mode == 1:
             # TODO(Part 1): Change these numbers to different RGB values (between 0 and 1)
             # Example: glClearColor(1, 0, 0, 1) → red background
-            glClearColor(0, 0, 1, 1)
+            pass
         else:
             glClearColor(0, 0, 0, 1)  # hidden behind image
             glEnable(GL_TEXTURE_2D)
@@ -66,10 +66,10 @@ class App:
         # (swap top and bottom) to see how it affects the image orientation.
         glBindTexture(GL_TEXTURE_2D, self.bg_tex)
         glBegin(GL_QUADS)
-        glTexCoord2f(0, 1); glVertex2f(-1, -1)
-        glTexCoord2f(1, 1); glVertex2f( 1, -1)
-        glTexCoord2f(1, 0); glVertex2f( 1,  1)
-        glTexCoord2f(0, 0); glVertex2f(-1,  1)
+        glTexCoord2f(0, 0); glVertex2f(-1, -1)
+        glTexCoord2f(1, 0); glVertex2f( 1, -1)
+        glTexCoord2f(1, 1); glVertex2f( 1,  1)
+        glTexCoord2f(0, 1); glVertex2f(-1,  1)
         glEnd()
 
     def run(self) -> None:
@@ -95,6 +95,6 @@ if __name__ == "__main__":
     # TODO: Change between modes for practice
     # mode=1 → solid color background
     # mode=2 → image background
-    myApp = App(mode=2)
+    myApp = App(mode=1)
     myApp.run()
     myApp.quit()
